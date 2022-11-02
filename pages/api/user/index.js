@@ -1,12 +1,12 @@
 import { initDB } from "service/db";
 
-export default async function handler(req, res) {
+export async function handler(req, res) {
   const db = await initDB();
   try {
     const data = await db.collection("users").find({}).toArray();
 
     return res.json(data);
   } catch (e) {
-    console.error(e);
+    return e;
   }
 }
