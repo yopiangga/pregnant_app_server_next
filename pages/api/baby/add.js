@@ -9,6 +9,7 @@ export default async function handler(req, res) {
         city: req.body.ttl.city,
         date: req.body.ttl.date,
       },
+      name: req.body.name,
       picture: req.body.picture,
       nik: req.body.nik,
       kk: req.body.kk,
