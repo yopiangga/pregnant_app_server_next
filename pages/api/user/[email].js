@@ -9,8 +9,10 @@ export default async function handler(req, res) {
     optionsSuccessStatus: 200,
   });
 
+  const { email } = req.query;
+
   try {
-    const data = await db.collection("babys").find({}).toArray();
+    const data = await db.collection("users").find({ email: email }).toArray();
 
     return res.json(data);
   } catch (e) {

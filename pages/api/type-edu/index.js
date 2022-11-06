@@ -8,9 +8,8 @@ export default async function handler(req, res) {
     origin: "*",
     optionsSuccessStatus: 200,
   });
-
   try {
-    const data = await db.collection("babys").find({}).toArray();
+    const data = await db.collection("types-edu").find({}).toArray();
 
     return res.json(data);
   } catch (e) {

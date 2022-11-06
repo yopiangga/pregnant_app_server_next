@@ -1,10 +1,18 @@
 import { initDB } from "service/db";
+import NextCors from "nextjs-cors";
+import NextCors from "nextjs-cors";
 
 export default async function handler(req, res) {
   const db = await initDB();
+  await NextCors(req, res, {
+    methods: ["POST"],
+    origin: "*",
+    optionsSuccessStatus: 200,
+  });
+
   if (req.method === "POST") {
     const data = {
-      type_id: res.body.type_id,
+      type_id: req.body.type_id,
       title: req.body.title,
       index: req.body.index,
       createdAt: new Date(),
@@ -12,7 +20,7 @@ export default async function handler(req, res) {
     };
 
     try {
-      const result = await db.collection("types-video").insertOne(data);
+      const result = await db.collection("types-edu").insertOne(data);
 
       return res.status(200).json({ message: "Berhasil submit", data: result });
     } catch (e) {

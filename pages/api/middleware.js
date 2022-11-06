@@ -1,12 +1,10 @@
-import districts from "./3573.json" assert { type: "json" };
+import { NextRequest, NextResponse } from "next/server";
 import NextCors from "nextjs-cors";
 
-export default async function handler(req, res) {
+export async function middleware(req) {
   await NextCors(req, res, {
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     origin: "*",
     optionsSuccessStatus: 200,
   });
-
-  return res.json(districts);
 }
