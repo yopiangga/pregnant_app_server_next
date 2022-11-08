@@ -5,12 +5,12 @@ import NextCors from "nextjs-cors";
 export default async function handler(req, res) {
   const db = await initDB();
   await NextCors(req, res, {
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    methods: ["DELETE", "POST"],
     origin: "*",
     optionsSuccessStatus: 200,
   });
 
-  if (req.method === "DELETE") {
+  if (req.method === "POST") {
     try {
       const result = await db
         .collection("articles")

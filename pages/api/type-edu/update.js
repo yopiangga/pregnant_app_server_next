@@ -9,8 +9,7 @@ export default async function handler(req, res) {
     origin: "*",
     optionsSuccessStatus: 200,
   });
-
-  if (req.method === "POST") {
+  if (req.method === "PUT") {
     const data = {
       ...req.body.data,
       updatedAt: new Date(),
@@ -18,7 +17,7 @@ export default async function handler(req, res) {
 
     try {
       const result = await db
-        .collection("articles")
+        .collection("types-edu")
         .updateOne({ _id: ObjectId(req.body._id) }, { $set: data });
 
       return res.status(200).json({ message: "Berhasil update", data: result });

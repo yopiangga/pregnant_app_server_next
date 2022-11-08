@@ -1,6 +1,5 @@
 import { initDB } from "service/db";
 import NextCors from "nextjs-cors";
-import NextCors from "nextjs-cors";
 
 export default async function handler(req, res) {
   const db = await initDB();

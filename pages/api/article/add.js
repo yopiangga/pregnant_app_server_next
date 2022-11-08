@@ -4,18 +4,19 @@ import NextCors from "nextjs-cors";
 export default async function handler(req, res) {
   const db = await initDB();
   await NextCors(req, res, {
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    methods: ["POST"],
     origin: "*",
     optionsSuccessStatus: 200,
   });
 
   if (req.method === "POST") {
     const data = {
+      type: req.body.type,
       title: req.body.title,
       description: req.body.description,
-      user: res.body.user,
-      url: res.body.url,
-      thumbnail: res.body.thumbnail,
+      user: req.body.user,
+      url: req.body.url,
+      thumbnail: req.body.thumbnail,
       createdAt: new Date(),
       updatedAt: null,
     };

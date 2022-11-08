@@ -4,7 +4,7 @@ import NextCors from "nextjs-cors";
 export default async function handler(req, res) {
   const db = await initDB();
   await NextCors(req, res, {
-    methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
+    methods: ["POST"],
     origin: "*",
     optionsSuccessStatus: 200,
   });

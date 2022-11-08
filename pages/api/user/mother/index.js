@@ -10,7 +10,7 @@ export default async function handler(req, res) {
   });
 
   try {
-    const data = await db.collection("babys").find({}).toArray();
+    const data = await db.collection("users").find({ type: "1" }).toArray();
 
     return res.json(data);
   } catch (e) {
